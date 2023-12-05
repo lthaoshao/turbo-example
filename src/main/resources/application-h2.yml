@@ -1,0 +1,35 @@
+
+spring:
+  datasource:
+    dynamic:
+      primary: engine
+      datasource:
+        engine:
+          type: com.alibaba.druid.pool.DruidDataSource
+          username: root
+          password:
+          driver-class-name: org.h2.Driver
+          url: jdbc:h2:mem:engine;MODE=MYSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+
+
+    schema: classpath:static/db/turbo-h2-ddl.sql
+    data: classpath:static/db/turbo-dml.sql
+    initialization-mode: always
+  h2:
+    console:
+      path: /h2  # h2嵌入式数据库控制台，可以通过浏览器访问
+      enabled: true
+      settings:
+        trace: true
+
+
+#logging:
+#  level:
+#    web: debug
+#    config: classpath:logback-spring.xml
+
+
+mybatis-plus:
+  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
+    map-underscore-to-camel-case: true # 开启驼峰映射(mp默认开启)
