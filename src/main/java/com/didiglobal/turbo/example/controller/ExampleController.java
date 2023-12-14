@@ -80,6 +80,11 @@ public class ExampleController {
         String nodeInstanceId = activeTaskInstance.getString("nodeInstanceId");
         log.info("流程创建成功.||flowInstanceId={}||taskId={}||nodeKey={}||nodeName={}", flowInstanceId, nodeInstanceId, nodeKey, nodeName);
 
+        //*********************************
+        // 在下一次提交之前, 我们可以处理一些业务上是事情
+        // 比如, 表单的处理或者系统任务的处理等等
+        //*********************************
+
         // 提交 task 1
         JSONObject commitRequest = new JSONObject();
         commitRequest.put("flowInstanceId", flowInstanceId);
